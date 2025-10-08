@@ -128,6 +128,16 @@ int fifo_get_string(Char_Fifo* fifo, char* string) {
     ++string_pos;
   }
 
+  // Remove '\n' from the buffer
+  fifo->data[fifo->read_index] = '\0';
+
+  // Take the '\n'
+  fifo_get_char(fifo, &data);
+  string[string_pos] = '\n';
+  // End the string
+  ++string_pos;
+  string[string_pos] = '\0';
+
   return SUCCESS;
 }
 

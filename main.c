@@ -21,7 +21,8 @@ int main(void) {
     // Reading the fifo
     char* another_string[FIFO_SIZE];
     fifo_get_string(&fifo, (char *) another_string);
-    printf("String inside FIFO : %s\n", (char *) another_string);
+    printf("String inside FIFO : %s", (char *) another_string);
+    printf("\n");
   }
 
   fifo_free(&fifo);
