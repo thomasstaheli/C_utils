@@ -1,10 +1,10 @@
 /**
- * @file    main.c
+ * @file    fifo_poo_example.c
  * @author  Thomas Stäheli
  * @date    10.10.2025
  * @version 1.0
  *
- * @brief   Test file
+ * @brief   This is an example for the fifo.c library
  */
 
 #include <stdio.h>

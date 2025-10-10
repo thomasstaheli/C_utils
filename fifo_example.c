@@ -1,10 +1,10 @@
-/*
- * File Name      : fifo_example.c
- * Author         : Thomas Stäheli
- * Date           : 10.10.2025
- * Version        : 1.0
+/**
+ * @file    fifo_example.c
+ * @author  Thomas Stäheli
+ * @date    10.10.2025
+ * @version 1.0
  *
- * Description    : This is an example for the fifo.c library
+ * @brief   This is an example for the fifo.c library
  */
 
 #include <stdio.h>
