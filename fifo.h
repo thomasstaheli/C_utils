@@ -1,6 +1,11 @@
-//
-// Created by thoma on 07.10.2025.
-//
+/*
+ * File Name      : fifo.h
+ * Author         : Thomas Stäheli
+ * Date           : 10.10.2025
+ * Version        : 1.0
+ *
+ * Description    : This is a fifo library for char data type
+ */
 
 #ifndef C_UTILS_FIFO_H
 #define C_UTILS_FIFO_H
@@ -14,6 +19,7 @@ typedef struct {
     uint16_t write_index;   // Write Index
     uint16_t read_index;    // Read Index
 } Char_Fifo;
+
 
 int fifo_init(Char_Fifo* fifo, uint16_t capacity);
 int fifo_free(Char_Fifo* fifo);

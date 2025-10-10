@@ -1,3 +1,12 @@
+/*
+ * File Name      : fifo.c
+ * Author         : Thomas Stäheli
+ * Date           : 10.10.2025
+ * Version        : 1.0
+ *
+ * Description    : This is a fifo library for char data type
+ */
+
 #include <malloc.h>
 #include <string.h>
 #include "fifo.h"
@@ -9,6 +18,13 @@
 #define STRING_FOUND      4
 #define STRING_NOT_FOUND  (-1)
 
+/*
+ * Initializes the fifo
+ * Allocates memory for the data table
+ * @param fifo : Pointer to the fifo structure
+ * @param capacity : Capacity of the fifo
+ * @return SUCCESS if the fifo was initialized successfully, FAILURE otherwise
+ */
 int fifo_init(Char_Fifo* fifo, uint16_t capacity) {
 
   fifo->capacity = capacity;
@@ -23,12 +39,22 @@ int fifo_init(Char_Fifo* fifo, uint16_t capacity) {
   return SUCCESS;
 }
 
+/*
+ * Frees the memory allocated for the data table
+ * @param fifo : Pointer to the fifo structure
+ * @return SUCCESS if the memory was freed successfully, FAILURE otherwise
+ */
 int fifo_free(Char_Fifo* fifo) {
   free(fifo->data);
   return SUCCESS;
 }
 
-// See what is inside the fifo, without taking it
+/*
+ * See what is inside the fifo, without taking it
+ * @param fifo : Pointer to the fifo structure
+ * @param data : Pointer to the variable where the data will be stored
+ * @return SUCCESS if the data was read successfully, FIFO_IS_EMPTY if the fifo is empty
+ */
 int fifo_peek_char(Char_Fifo* fifo, char* data) {
 
   if(fifo->size > 0) {
@@ -38,7 +64,12 @@ int fifo_peek_char(Char_Fifo* fifo, char* data) {
   return FIFO_IS_EMPTY;
 }
 
-// Take the data and remove it
+/*
+ * Takes one char from the fifo
+ * @param fifo : Pointer to the fifo structure
+ * @param data : Pointer to the variable where the data will be stored
+ * @return SUCCESS if the data was read successfully, FIFO_IS_EMPTY if the fifo is empty
+ */
 int fifo_get_char(Char_Fifo* fifo, char* data) {
   // Check if any data is in the fifo
   if(fifo->size > 0) {
@@ -55,6 +86,12 @@ int fifo_get_char(Char_Fifo* fifo, char* data) {
   return FIFO_IS_EMPTY;
 }
 
+/*
+ * Puts one char into the fifo
+ * @param fifo : Pointer to the fifo structure
+ * @param data : Data to be put into the fifo
+ * @return SUCCESS if the data was put successfully, FIFO_IS_FULL if the fifo is full
+ */
 int fifo_put_char(Char_Fifo* fifo, char data) {
   // Check if the fifo is full
   if(fifo->size >= fifo->capacity) {
@@ -73,11 +110,15 @@ int fifo_put_char(Char_Fifo* fifo, char data) {
   return SUCCESS;
 }
 
+/*
+ * Puts a string into the fifo
+ * @param fifo : Pointer to the fifo structure
+ * @param string : String to be put into the fifo
+ * @return SUCCESS if the string was put successfully, FAILURE otherwise
+ */
 int fifo_put_string(Char_Fifo* fifo, char* string) {
 
-  // SHOULD CHECK FOR '\0' -> because using strlen
-  // SHOULD CONTAIN '\n' too for fifo_check_for_string
-  // TODO
+  // TODO : SHOULD CHECK FOR '\0' -> because using strlen
 
   uint16_t string_size = strlen(string);
 
@@ -92,7 +133,12 @@ int fifo_put_string(Char_Fifo* fifo, char* string) {
   return SUCCESS;
 }
 
-//
+/*
+ * Checks if there is a string (ending with '\n') in the fifo
+ * @param fifo : Pointer to the fifo structure
+ * @param index : Pointer to the variable where the index of the '\n' will be stored
+ * @return STRING_FOUND if a string was found, STRING_NOT_FOUND otherwise
+ */
 int fifo_check_for_string(Char_Fifo* fifo, uint16_t* index) {
 
   uint16_t current_index = fifo->read_index;
@@ -113,6 +159,12 @@ int fifo_check_for_string(Char_Fifo* fifo, uint16_t* index) {
   return STRING_NOT_FOUND;
 }
 
+/*
+ * Takes a string from the fifo
+ * @param fifo : Pointer to the fifo structure
+ * @param string : Pointer to the variable where the string will be stored
+ * @return SUCCESS if a string was read successfully, FAILURE otherwise
+ */
 int fifo_get_string(Char_Fifo* fifo, char* string) {
 
   uint16_t index;

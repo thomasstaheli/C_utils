@@ -1,10 +1,13 @@
 /*
- * Author : Thomas Stäheli
- * Description : Lib FIFO plutôt utiliser dans l'embarqué
+ * File Name      : fifo_example.c
+ * Author         : Thomas Stäheli
+ * Date           : 10.10.2025
+ * Version        : 1.0
+ *
+ * Description    : This is an example for the fifo.c library
  */
 
 #include <stdio.h>
-#include <string.h>
 #include "fifo.h"
 
 #define FIFO_SIZE 50
