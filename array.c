@@ -1,14 +1,10 @@
 /**
- * @file    main.c
+ * @file    array.c
  * @author  Thomas Stäheli
  * @date    10.10.2025
  * @version 1.0
  *
- * @brief   Test file
+ * @brief   array library
  */
 
-#include <stdio.h>
 
-int main(void) {
-
-}
